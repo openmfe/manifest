@@ -1,0 +1,31 @@
+{
+    "name": "openmfe-manifest",
+    "type": "module",
+    "version": "1.0.0",
+    "main": "dist/manifest.js",
+    "exports": {
+        ".": {
+            "import": "./dist/manifest.js",
+            "require": "./dist/manifest.cjs"
+        }
+    },
+    "bin": {
+        "openmfe-validate": "./cli/validate.js",
+        "openmfe-contract": "./cli/contract.js"
+    },
+    "scripts": {
+        "build": "test -d dist && rm -rf dist; npx rollup -c --environment BUILD:production"
+    },
+    "files": [
+        "dist/*",
+        "cli/*"
+    ],
+    "dependencies": {
+        "ajv": "^6.12.6",
+        "deep-object-diff": "^1.1.0",
+        "node-fetch": "^3.1.0",
+        "yaml": "^1.10.2",
+        "rollup": "^2.63.0",
+        "rollup-plugin-copy": "^3.4.0"
+    }
+}
