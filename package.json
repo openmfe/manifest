@@ -1,5 +1,5 @@
 {
-    "name": "openmfe-manifest",
+    "name": "@openmfe/manifest",
     "type": "module",
     "version": "1.0.0",
     "main": "dist/manifest.js",
