@@ -61,6 +61,10 @@
             "$ref": "#/_definitions/url"
         },
 
+        "repository": {
+            "$ref": "#/_definitions/url"
+        },
+
         "url": {
             "type": "object",
             "properties": {
@@ -186,7 +190,8 @@
         "publisher",
         "attributes",
         "events",
-        "examples"
+        "examples",
+        "repository"
     ],
 
     "additionalProperties": false
