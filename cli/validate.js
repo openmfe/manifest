@@ -4,7 +4,7 @@ import * as fs from 'fs'
 import path from 'path'
 import fetch from 'node-fetch'
 import { URL } from 'url'
-import getManifest from '../src/manifest.js'
+import getManifest from '../dist/manifest.js'
 
 ;(async () => {
     const url = process.argv[2]
