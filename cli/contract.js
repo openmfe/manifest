@@ -13,12 +13,14 @@ import checkContract from '../dist/contract.js'
         throw new Error("A URL must be provided.")
 
     try {
-        const histFile = `${process.env.npm_config_local_prefix}/.contracts`
+        const histFile = `${process.cwd()}/.contracts`
+
         const history = fs.existsSync(histFile)
             ? JSON.parse(fs.readFileSync(histFile))
             : {}
 
-        const newHistory = checkContract(url, history)
+        const newHistory = await checkContract(url, history)
+
         fs.writeFileSync(histFile, JSON.stringify(newHistory, null, 4))
     } catch (e) {
         console.error(e.message)
