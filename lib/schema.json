@@ -173,7 +173,7 @@
                         "$ref": "#/_definitions/url"
                     }
                 },
-                "required": ["description", "location"],
+                "required": ["description", "url"],
                 "additionalProperties": false
             }
         }
