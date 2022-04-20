@@ -21,7 +21,7 @@
             "type": "string",
             "format": "uri-reference"
         },
-        "attributeOrEvent": {
+        "attributeOrEventOrParameter": {
             "type": "object",
             "properties": {
                 "name": {
@@ -110,7 +110,7 @@
             "type": "array",
             "items": {
                 "allOf": [{
-                        "$ref": "#/_definitions/attributeOrEvent"
+                        "$ref": "#/_definitions/attributeOrEventOrParameter"
                     },
                     {
                         "type": "object",
@@ -131,7 +131,62 @@
         "events": {
             "type": "array",
             "items": {
-                "$ref": "#/_definitions/attributeOrEvent"
+                "$ref": "#/_definitions/attributeOrEventOrParameter"
+            }
+        },
+
+        "functions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "$ref": "#/_definitions/name"
+                    },
+                    "description": {
+                        "$ref": "#/_definitions/description"
+                    },
+                    "documentation": {
+                        "$ref": "#/_definitions/url"
+                    },
+                    "async": {
+                        "type": "boolean"
+                    },
+                    "parameters": {
+                        "type": "array",
+                        "items": {
+                            "allOf": [{
+                                    "$ref": "#/_definitions/attributeOrEventOrParameter"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "required": {
+                                            "type": "boolean"
+                                        },
+                                        "default": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": ["required"]
+                                }
+                            ]
+                        }
+                    },
+                    "return": {
+                        "type": "object",
+                        "properties": {
+                            "description": {
+                                "$ref": "#/_definitions/description"
+                            },
+                            "schema": {
+                                "$ref": "http://json-schema.org/draft-07/schema#"
+                            }
+                        },
+                        "required": ["description"]
+                    }
+                },
+                "required": ["name", "description", "parameters", "return"]
             }
         },
 
@@ -181,17 +236,13 @@
 
     "required": [
         "version",
-        "name",
-        "description",
-        "documentation",
-        "tag",
         "url",
-        "icon",
+        "name",
+        "tag",
         "publisher",
-        "attributes",
-        "events",
-        "examples",
-        "repository"
+        "description",
+        "icon",
+        "examples"
     ],
 
     "additionalProperties": false
