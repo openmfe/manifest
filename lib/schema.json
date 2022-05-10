@@ -183,10 +183,10 @@
                                 "$ref": "http://json-schema.org/draft-07/schema#"
                             }
                         },
-                        "required": ["description"]
+                        "required": ["description", "schema"]
                     }
                 },
-                "required": ["name", "description", "parameters", "return"]
+                "required": ["name", "description", "parameters"]
             }
         },
 
