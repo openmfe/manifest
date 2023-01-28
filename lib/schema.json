@@ -1,6 +1,5 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-
     "_definitions": {
         "name": {
             "type": "string",
@@ -42,34 +41,31 @@
                     "$ref": "http://json-schema.org/draft-07/schema#"
                 }
             },
-            "required": ["name", "description", "schema"]
+            "required": [
+                "name",
+                "description",
+                "schema"
+            ]
         }
     },
-
     "type": "object",
-
     "properties": {
         "version": {
             "type": "string",
             "pattern": "^[0-9]+\\.[0-9]+(\\.[0-9]+)?$"
         },
-
         "name": {
             "$ref": "#/_definitions/name"
         },
-
         "description": {
             "$ref": "#/_definitions/description"
         },
-
         "documentation": {
             "$ref": "#/_definitions/url"
         },
-
         "repository": {
             "$ref": "#/_definitions/url"
         },
-
         "url": {
             "type": "object",
             "properties": {
@@ -83,20 +79,20 @@
                     "$ref": "#/_definitions/url"
                 }
             },
-            "required": ["frontend", "prerender"]
+            "required": [
+                "frontend",
+                "prerender"
+            ]
         },
-
         "tag": {
             "type": "string",
             "minLength": 5,
             "maxLength": 40,
             "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
         },
-
         "icon": {
             "$ref": "#/_definitions/url"
         },
-
         "publisher": {
             "type": "object",
             "properties": {
@@ -108,13 +104,16 @@
                     "format": "email"
                 }
             },
-            "required": ["name", "email"]
+            "required": [
+                "name",
+                "email"
+            ]
         },
-
         "attributes": {
             "type": "array",
             "items": {
-                "allOf": [{
+                "allOf": [
+                    {
                         "$ref": "#/_definitions/attributeOrEventOrParameter"
                     },
                     {
@@ -127,19 +126,19 @@
                                 "type": "string"
                             }
                         },
-                        "required": ["required"]
+                        "required": [
+                            "required"
+                        ]
                     }
                 ]
             }
         },
-
         "events": {
             "type": "array",
             "items": {
                 "$ref": "#/_definitions/attributeOrEventOrParameter"
             }
         },
-
         "functions": {
             "type": "array",
             "items": {
@@ -160,7 +159,8 @@
                     "parameters": {
                         "type": "array",
                         "items": {
-                            "allOf": [{
+                            "allOf": [
+                                {
                                     "$ref": "#/_definitions/attributeOrEventOrParameter"
                                 },
                                 {
@@ -173,7 +173,9 @@
                                             "type": "string"
                                         }
                                     },
-                                    "required": ["required"]
+                                    "required": [
+                                        "required"
+                                    ]
                                 }
                             ]
                         }
@@ -188,39 +190,41 @@
                                 "$ref": "http://json-schema.org/draft-07/schema#"
                             }
                         },
-                        "required": ["description", "schema"]
+                        "required": [
+                            "description",
+                            "schema"
+                        ]
                     }
                 },
-                "required": ["name", "description", "parameters"]
+                "required": [
+                    "name",
+                    "description",
+                    "parameters"
+                ]
             }
         },
-
         "semantic": {
             "$ref": "http://json-schema.org/draft-07/schema#"
         },
-
         "examples": {
             "type": "array",
             "minItems": 1,
             "items": {
                 "type": "object",
-                "required": ["description", "attributes"],
+                "required": [
+                    "description",
+                    "attributes"
+                ],
                 "properties": {
                     "description": {
                         "$ref": "#/_definitions/shortDescription"
                     },
                     "attributes": {
-                        "type": "object",
-                        "patternProperties": {
-                            "^.*$": {
-                                "type": "string"
-                            }
-                        }
+                        "type": "object"
                     }
                 }
             }
         },
-
         "screenshots": {
             "type": "array",
             "items": {
@@ -233,12 +237,14 @@
                         "$ref": "#/_definitions/url"
                     }
                 },
-                "required": ["description", "url"],
+                "required": [
+                    "description",
+                    "url"
+                ],
                 "additionalProperties": false
             }
         }
     },
-
     "required": [
         "version",
         "url",
@@ -249,6 +255,5 @@
         "icon",
         "examples"
     ],
-
     "additionalProperties": false
 }
